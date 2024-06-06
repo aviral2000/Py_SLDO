@@ -1,7 +1,7 @@
 # Py_SLDO
 A Python testing suite for ideas relating to learning stable sparse differential operators from data.
 
-The arXiv link associated with this work is: https://arxiv.org/abs/2405.00198.
+ArXiv link with the pre-print associated with this work: https://arxiv.org/abs/2405.00198.
 
 Key points for using this framework:
 1. The current state of the code is problem-specific
