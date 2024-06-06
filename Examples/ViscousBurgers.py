@@ -215,7 +215,8 @@ def LearnDifferentialOperator(params,iplot,isave,u_data,ut_data):
             advecOpt[indx1,k] = coefftmp[0:totalwidth1]
             diffOpt[indx2,k] = coefftmp[totalwidth1:totalwidth]            
         elif(learntype == "Stable-C"):
-                            
+            
+            ## ieqtype defines the type of constraint used                             
             if(ieqtype == 1):
                 ineq_cons = {'type': 'ineq',
                           'fun' : lambda x: np.array([x[nwidth1] - np.sum(np.abs(x[0:nwidth1])) - 
@@ -254,7 +255,7 @@ def LearnDifferentialOperator(params,iplot,isave,u_data,ut_data):
                                                                     -umean*np.sign(x[nwidth1+1:totalwidth1]),np.zeros(totalwidth2)]),
                                                         np.concatenate([np.zeros(totalwidth1),-1*np.sign(x[totalwidth1:totalwidth1+nwidth2]),[1],
                                                                     -1*np.sign(x[totalwidth1+nwidth2+1:totalwidth])])])}   
-            elif(ieqtype == 6):
+            elif(ieqtype == 6):  ## used in the article: closest to the theory while removing nonlinear operator terms from the absolute sign for ease of implementation
                 mu2 = mu
                 ineq_cons = {'type': 'ineq',
                           'fun' : lambda x: np.array([2*umean*x[nwidth1] + mu2*(x[totalwidth1+nwidth2] - np.sum(np.abs(x[totalwidth1:totalwidth1+nwidth2])) - 
